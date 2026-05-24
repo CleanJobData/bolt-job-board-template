@@ -1,0 +1,9 @@
+import { apiFetch } from "./client";
+import { GeoSuggestResult } from "./types";
+
+export async function suggestGeo(q: string): Promise<GeoSuggestResult[]> {
+  if (!q || q.length < 2) return [];
+
+  const params = new URLSearchParams({ q });
+  return apiFetch<GeoSuggestResult[]>(`/geo/suggest?${params.toString()}`);
+}
