@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --brand-linkedin: #0077b5;
+    --brand-twitter: #1da1f2;
+    --brand-youtube: #ff0000;
+    --brand-facebook: #1877f2;
+    --brand-instagram: #e4405f;
+  }
+
   html {
     --background: #faf7f2;
     --foreground: #1a1a17;
@@ -22,6 +30,8 @@
     --destructive-foreground: #ffffff;
     --accent: #f0fdf4;
     --accent-foreground: #166534;
+    --warning: #f59e0b;
+    --warning-foreground: #78350f;
     --on-primary: #ffffff;
     --on-primary-hover: #f4f1ec;
     --on-primary-foreground: #10b981;
@@ -30,6 +40,7 @@
     --inverse-foreground: #10b981;
     --switch-thumb: #ffffff;
     --switch-thumb-border: #f0ede8;
+    --overlay: rgb(0 0 0 / 0.4);
     --radius: 0.75rem;
     --spacing-card: 1.25rem;
   }
@@ -59,6 +70,8 @@
     --destructive-foreground: #fafafa;
     --accent: #064e3b;
     --accent-foreground: #10b981;
+    --warning: #f59e0b;
+    --warning-foreground: #fde68a;
     --on-primary: #ffffff;
     --on-primary-hover: #2d2d2d;
     --on-primary-foreground: #064e3b;
@@ -67,6 +80,7 @@
     --inverse-foreground: #1a1a1a;
     --switch-thumb: #fafafa;
     --switch-thumb-border: #333333;
+    --overlay: rgb(0 0 0 / 0.4);
     --radius: 0.75rem;
     --spacing-card: 1.25rem;
   }
@@ -84,7 +98,7 @@
   body {
     background: var(--background);
     color: var(--foreground);
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -101,11 +115,18 @@
   .text-destructive { color: var(--destructive); }
   .text-destructive-foreground { color: var(--destructive-foreground); }
   .text-accent-foreground { color: var(--accent-foreground); }
+  .text-warning { color: var(--warning); }
+  .text-warning-foreground { color: var(--warning-foreground); }
   .text-on-primary { color: var(--on-primary); }
   .text-on-primary-hover { color: var(--on-primary-hover); }
   .text-on-primary-foreground { color: var(--on-primary-foreground); }
   .text-inverse-foreground { color: var(--inverse-foreground); }
   .text-switch-thumb { color: var(--switch-thumb); }
+  .text-brand-linkedin { color: var(--brand-linkedin); }
+  .text-brand-twitter { color: var(--brand-twitter); }
+  .text-brand-youtube { color: var(--brand-youtube); }
+  .text-brand-facebook { color: var(--brand-facebook); }
+  .text-brand-instagram { color: var(--brand-instagram); }
 
   .bg-background { background-color: var(--background); }
   .bg-foreground { background-color: var(--foreground); }
@@ -116,10 +137,12 @@
   .bg-secondary { background-color: var(--secondary); }
   .bg-destructive { background-color: var(--destructive); }
   .bg-accent { background-color: var(--accent); }
+  .bg-warning { background-color: var(--warning); }
   .bg-inverse-background { background-color: var(--inverse-background); }
   .bg-inverse-background-hover { background-color: var(--inverse-background-hover); }
   .bg-input-background { background-color: var(--input-background); }
   .bg-switch-thumb { background-color: var(--switch-thumb); }
+  .bg-overlay { background-color: var(--overlay); }
 
   .border-border { border-color: var(--border); }
   .border-input { border-color: var(--input); }
@@ -201,6 +224,10 @@
   font-weight: 600;
 }
 
+.job-description em, .job-description i {
+  font-style: italic;
+}
+
 .job-description blockquote {
   border-left: 3px solid var(--border);
   padding-left: 1rem;
@@ -232,6 +259,14 @@
   border: none;
   border-top: 1px solid var(--border);
   margin: 1.5em 0;
+}
+
+.job-description img,
+.job-description video,
+.job-description iframe {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
 }
 
 .job-description table {

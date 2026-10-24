@@ -13,9 +13,10 @@ interface SheetProps {
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
+  title?: string;
 }
 
-export function Sheet({ isOpen, onClose, children, className }: SheetProps) {
+export function Sheet({ isOpen, onClose, children, className, title = "Job Details" }: SheetProps) {
   return (
     <Transition show={isOpen} as={React.Fragment}>
       <HeadlessDialog as="div" className="relative z-50" onClose={onClose}>
@@ -28,12 +29,12 @@ export function Sheet({ isOpen, onClose, children, className }: SheetProps) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="fixed inset-0 bg-overlay backdrop-blur-sm" />
         </TransitionChild>
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-4 sm:pl-10">
               <TransitionChild
                 as={React.Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -45,13 +46,13 @@ export function Sheet({ isOpen, onClose, children, className }: SheetProps) {
               >
                 <DialogPanel
                   className={cn(
-                    "pointer-events-auto w-screen max-w-4xl border-l border-border bg-card shadow-2xl",
+                    "pointer-events-auto w-screen max-w-4xl border-l border-border bg-card shadow-lg",
                     className,
                   )}
                 >
                   <div className="flex h-full flex-col overflow-y-auto">
-                    <div className="sticky top-0 z-10 flex items-center justify-between bg-card/80 backdrop-blur-md px-6 py-4 border-b border-border/50">
-                      <h2 className="text-lg font-bold">Job Details</h2>
+                    <div className="sticky top-0 z-10 flex items-center justify-between bg-card/80 backdrop-blur-md px-4 sm:px-6 py-4 border-b border-border/50">
+                      <h2 className="text-lg font-bold">{title}</h2>
                       <button
                         type="button"
                         className="rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
@@ -60,7 +61,7 @@ export function Sheet({ isOpen, onClose, children, className }: SheetProps) {
                         <FaXmark className="h-5 w-5" />
                       </button>
                     </div>
-                    <div className="relative flex-1 px-6 py-8">
+                    <div className="relative flex-1 px-4 sm:px-6 py-5 sm:py-8">
                       {children}
                     </div>
                   </div>

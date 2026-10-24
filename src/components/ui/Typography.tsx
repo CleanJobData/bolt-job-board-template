@@ -17,6 +17,7 @@ const typographyVariants = cva("text-foreground", {
       large: "text-lg font-semibold",
       small: "text-sm font-medium leading-none",
       muted: "text-sm text-muted-foreground",
+      overline: "text-xs font-semibold uppercase tracking-wider text-muted-foreground",
     },
   },
   defaultVariants: {
@@ -24,7 +25,7 @@ const typographyVariants = cva("text-foreground", {
   },
 });
 
-type TypographyElement = "h1" | "h2" | "h3" | "h4" | "p" | "blockquote" | "ul" | "code" | "span";
+type TypographyElement = "h1" | "h2" | "h3" | "h4" | "p" | "blockquote" | "ul" | "code" | "span" | "small";
 
 const variantToElement: Record<NonNullable<VariantProps<typeof typographyVariants>["variant"]>, TypographyElement> = {
   h1: "h1",
@@ -37,8 +38,9 @@ const variantToElement: Record<NonNullable<VariantProps<typeof typographyVariant
   inlineCode: "code",
   lead: "p",
   large: "span",
-  small: "span",
+  small: "small",
   muted: "p",
+  overline: "span",
 };
 
 export interface TypographyProps
